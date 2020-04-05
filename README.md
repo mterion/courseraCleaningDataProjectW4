@@ -23,7 +23,21 @@ https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Datas
 
 
 ## Scripts
-My push trial is this one.
+There are different scripts:
+1. **run_analysis.R**
+* Call/run the codebook file **codebook.Rmd**
+1. **codebook.Rmd**
+* Call/run the **extractMergeCreateDf.R** file
+1. **extractMergeCreateDf.R** file
+* Extract the source txt data sets
+* Clean them
+* Merge them together
+1. **codebook.Rmd** 
+* Integrate the merged data frame and rename it into codebook_data
+* Add meta data
+* Add labels to values and variables
+
+
 
 ## Output
 
