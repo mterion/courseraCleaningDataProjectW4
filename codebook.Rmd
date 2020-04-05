@@ -53,6 +53,12 @@ codebook_data <- detect_missing(codebook_data,
 # automatically compute reliabilities.
 # However, it will not reverse items automatically.
 codebook_data <- detect_scales(codebook_data)
+
+
+
+# need to save codebook_data into the file data
+
+
 ```
 
 

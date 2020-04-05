@@ -5,9 +5,9 @@ library(dplyr)
 
 # TrainDataSet
         #Extract
-        trainSet <- read.table("./data/train/X_train.txt", header = FALSE)
-        trainLab <- read.table("./data/train/y_train.txt", header = FALSE)
-        trainSubj <- read.table("./data/train/subject_train.txt", header = FALSE)
+        trainSet <- read.table("./data/sourceData/train/X_train.txt", header = FALSE)
+        trainLab <- read.table("./data/sourceData/train/y_train.txt", header = FALSE)
+        trainSubj <- read.table("./data/sourceData/train/subject_train.txt", header = FALSE)
         
         #Clean
         trainSet <- trainSet %>%
@@ -35,9 +35,9 @@ library(dplyr)
 
 # TestDataSet
         #Extract
-        testSet <- read.table("./data/test/X_test.txt", header = FALSE)
-        testLab <- read.table("./data/test/y_test.txt", header = FALSE)
-        testSubj <- read.table("./data/test/subject_test.txt", header = FALSE)
+        testSet <- read.table("./data/sourceData/test/X_test.txt", header = FALSE)
+        testLab <- read.table("./data/sourceData/test/y_test.txt", header = FALSE)
+        testSubj <- read.table("./data/sourceData/test/subject_test.txt", header = FALSE)
 
         #Clean
         testSet <- testSet %>%

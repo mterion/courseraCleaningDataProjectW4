@@ -16,23 +16,31 @@ You should create one R script called run_analysis.R that does the following.
 1. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 ## Data
+All data can be found into the data folder data that contains two folder subdivisions *sourceData* and *finalData*
+
+1. *sourceData*
+Contains all the original data in format txt
+
 A full description is available at the site where the data was obtained: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 Here are the data for the project:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
+2. *finalData*
+Contains the final - clean - merged data sets used for analysis.
+
 
 ## Scripts
-There are different scripts:
-1. **run_analysis.R**
+The following scripts are run one after the other:
+1. *run_analysis.R*
 * Call/run the codebook file **codebook.Rmd**
-1. **codebook.Rmd**
+2. *codebook.Rmd*
 * Call/run the **extractMergeCreateDf.R** file
-1. **extractMergeCreateDf.R** file
+3. *extractMergeCreateDf.R* file
 * Extract the source txt data sets
 * Clean them
 * Merge them together
-1. **codebook.Rmd** 
+4. *codebook.Rmd* 
 * Integrate the merged data frame and rename it into codebook_data
 * Add meta data
 * Add labels to values and variables
