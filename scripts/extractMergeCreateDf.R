@@ -69,5 +69,38 @@ library(dplyr)
         
         mergedDf <- mergedDf %>%
                 mutate(id = as.numeric(rownames(mergedDf))) %>%
-                select(id, set:V561)
+                select(id, set:V561) 
 
+# Labels: create data frame with two columns for labeling variables + values
+        #1st column = variable names
+        #2nd colun = variable value
+        library(codebook)
+        library(labelled)
+        library(dplyr)  #To reshape the imported dict df into a list
+        
+        #Create a df on the base of the variable names of the merged file
+        variable <- names(mergedDf)
+        varDf <- as.data.frame(variable) %>%
+                mutate(labelGroupOr = if_else((between(row_number(), 1, 4)),TRUE, FALSE))
+        
+        #labels : create 2 character vectors
+        lab1 <- c("id", "set", "labels", "subject")
+        lab2 <- read.table("./data/sourceData/features.txt", header = FALSE) %>%
+                pull(V2) %>%
+                as.character()
+        
+        labelDf1 <- varDf %>%
+                mutate(label = NA, valueLabels = NA) %>%
+                filter(labelGroupOr == TRUE) %>%
+                mutate(label = lab1)
+        
+        labelDf2 <- varDf %>%
+                mutate(label = NA, valueLabels = NA) %>%
+                filter(labelGroupOr == FALSE) %>%
+                mutate(label = lab2)
+     
+        labelMergedDf <- rbind(labelDf1, labelDf2) %>%
+                select(-(labelGroupOr))
+ 
+        
+        

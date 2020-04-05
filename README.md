@@ -27,6 +27,7 @@ Contains all the original data in format txt
 
 2. *finalData*
 Contains the final - clean - merged data sets used for the analysis.
+  * The *metadataFile* to export or share metadata if needed. It contains the final data set with all metadata and values attached to it.
 
 
 ## Scripts
@@ -35,13 +36,14 @@ The following scripts are run sequentially:
 * Call/run the codebook file *codebook.Rmd*
 2. *codebook.Rmd*
 * Call/run the *extractMergeCreateDf.R* file
+* Add metadata : 
 3. *extractMergeCreateDf.R* file
 * Extract the source txt data sets
 * Clean them
 * Merge them together
-4. *codebook.Rmd* continues his work
+4. *codebook.Rmd* continues its work
 * Integrate the merged data frame and rename it into codebook_data
-* Add meta data
+* Add meta data and create the *metadataFile* that can be found in the file *data/finalData*
 * Add labels to values and variables
 
 

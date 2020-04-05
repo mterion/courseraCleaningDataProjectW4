@@ -30,20 +30,46 @@ pander::panderOptions("table.split.table", Inf)
 Now, we're preparing our data for the codebook.
 
 ```{r prepare_codebook}
-library(codebook)
-#codebook_data <- rio::import("https://osf.io/s87kd/download", "csv")
+#load packages
+    library(codebook)
+    library(labelled)
+    library(dplyr)  #To reshape the imported dict df into a list
+#Data : Import
+    codebook_data <- rio::import("./scripts/extractMergeCreateDf.R")
+    rm(mergedDf)
 
-codebook_data <- rio::import("./scripts/extractMergeCreateDf.R")
-rm(mergedDf)
+#Metadata : Add
 
+    
+    metadata(codebook_data)$name <- "Human Activity Recognition Using Smartphones Dataset"
 
-# omit the following lines, if your missing values are already properly labelled
-codebook_data <- detect_missing(codebook_data,
-    only_labelled = TRUE, # only labelled values are autodetected as
-                                   # missing
-    negative_values_are_missing = FALSE, # negative values are missing values
-    ninety_nine_problems = FALSE,   # 99/999 are missing values, if they
-                                   # are more than 5 MAD from the median
+    metadata(codebook_data)$description <- "The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist."
+  
+    metadata(codebook_data)$creator <- "Emmanuel Clivaz"
+    metadata(codebook_data)$citation <- "Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto. Smartlab - Non Linear Complex Systems Laboratory. DITEN - Università degli Studi di Genova."
+
+    metadata(codebook_data)$url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+    metadata(codebook_data)$datePublished <- "2013-04-24"
+    metadata(codebook_data)$temporalCoverage <- "Spring 2013"
+    metadata(codebook_data)$spatialCoverage <- "Online"
+
+#Labels : Variables
+
+    
+    
+    
+#Export/share data with metadata (use the rio package for export)
+        #Only way to keep all metadata in one file:
+    rio::export(codebook_data, "./data/finalData/metadataFile.rds") # means to R data structure file
+
+    
+    
+
+# Labels
+    # Missing values
+    codebook_data <- detect_missing(codebook_data,only_labelled = TRUE, # only labelled values are autodetected as missing - > yes
+    negative_values_are_missing = FALSE, # negative values are missing values -> no
+    ninety_nine_problems = FALSE,   # 99/999 are missing values, if they are more than 5 MAD from the median -> no
     )
 
 # If you are not using formr, the codebook package needs to guess which items
