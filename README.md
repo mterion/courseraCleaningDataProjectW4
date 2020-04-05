@@ -21,26 +21,25 @@ All data can be found into the data folder data that contains two folder subdivi
 1. *sourceData*
 Contains all the original data in format txt
 
-A full description is available at the site where the data was obtained: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+  *A full description is available at the site where the data was obtained: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
-Here are the data for the project:
-https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+  *Here are the data for the project: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 2. *finalData*
-Contains the final - clean - merged data sets used for analysis.
+Contains the final - clean - merged data sets used for the analysis.
 
 
 ## Scripts
-The following scripts are run one after the other:
+The following scripts are run sequentially:
 1. *run_analysis.R*
-* Call/run the codebook file **codebook.Rmd**
+* Call/run the codebook file *codebook.Rmd*
 2. *codebook.Rmd*
-* Call/run the **extractMergeCreateDf.R** file
+* Call/run the *extractMergeCreateDf.R* file
 3. *extractMergeCreateDf.R* file
 * Extract the source txt data sets
 * Clean them
 * Merge them together
-4. *codebook.Rmd* 
+4. *codebook.Rmd* continues his work
 * Integrate the merged data frame and rename it into codebook_data
 * Add meta data
 * Add labels to values and variables
