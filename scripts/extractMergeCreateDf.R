@@ -115,10 +115,10 @@ library(dplyr)
         labelString <- as.character()
         r = 1
         for(i in labVal) {
-                labelString <- paste(labelString, r, i)
+                labelString <- paste(labelString,r, i)
                 r = r+1
         }
-        rm(labVal,i,r)
+        
         labelString <- tolower(labelString)
         
         #integrate value label into dict
@@ -126,7 +126,7 @@ library(dplyr)
         labelMergedDf [2,3] <- "1 training 2 set" # set : 1 = training, 2 = test
         labelMergedDf [3,3] <- labelString
         labelMergedDf [4,3] <- "Subject id number"
-
+        rm(labVal,i,r, labelString)
         
          
         

@@ -49,5 +49,9 @@ The following scripts are run sequentially:
 
 
 ## Output
+The output folder contains the published codebook in html format html to be displayed in a browser. His name is *codebook.html*.
+
+## Figure
+Contains the individual descriptiv graphs for each variable
 
 ## Codebook
