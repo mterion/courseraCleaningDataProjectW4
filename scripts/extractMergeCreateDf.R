@@ -27,7 +27,7 @@ library(dplyr)
         #Merge
         trainMerged <- full_join(trainSet, trainLab, by = "id") %>%
                 full_join(trainSubj, by = "id") %>%
-                mutate(set = "training") %>%
+                mutate(set = 1) %>%
                 select(set, labels, subject, V1:V561)
 
         #Delete unused DataFrames
@@ -57,7 +57,7 @@ library(dplyr)
         #Merge
         testMerged <- full_join(testSet, testLab, by = "id") %>%
                 full_join(testSubj, by = "id") %>%
-                mutate(set = "test") %>%
+                mutate(set = 2) %>%
                 select(set, labels, subject, V1:V561)
 
         #Delete unused DataFrames
@@ -69,9 +69,10 @@ library(dplyr)
         
         mergedDf <- mergedDf %>%
                 mutate(id = as.numeric(rownames(mergedDf))) %>%
+                mutate(set=as.factor(set), labels=as.factor(labels), subject=as.factor(subject)) %>%
                 select(id, set:V561) 
 
-# Labels: create data frame with two columns for labeling variables + values
+# Dict creation: data frame with two columns for labeling variables + values
         #1st column = variable names
         #2nd colun = variable value
         library(codebook)
@@ -100,7 +101,33 @@ library(dplyr)
                 mutate(label = lab2)
      
         labelMergedDf <- rbind(labelDf1, labelDf2) %>%
+                mutate(variable = as.character(variable)) %>%
                 select(-(labelGroupOr))
- 
+                
+        rm(labelDf1,labelDf2, lab1, lab2, variable, varDf)
+        
+        # Value Labels
+        labVal <- read.table("./data/sourceData/activity_labels.txt", header = FALSE) %>%
+                pull(V2) %>%
+                as.character()
+
+        #Create just a string of label to be later integrated into the dict valueLabel col
+        labelString <- as.character()
+        r = 1
+        for(i in labVal) {
+                labelString <- paste(labelString, r, i)
+                r = r+1
+        }
+        rm(labVal,i,r)
+        labelString <- tolower(labelString)
+        
+        #integrate value label into dict
+        labelMergedDf [1,3] <- "Observation id number" # id
+        labelMergedDf [2,3] <- "1 training 2 set" # set : 1 = training, 2 = test
+        labelMergedDf [3,3] <- labelString
+        labelMergedDf [4,3] <- "Subject id number"
+
+        
+        
         
         
