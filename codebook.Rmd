@@ -35,12 +35,10 @@ Now, we're preparing our data for the codebook.
     library(labelled)
     library(dplyr)  #To reshape the imported dict df into a list
 #Data : Import
-    codebook_data <- rio::import("./scripts/extractMergeCreateDf.R")
-    rm(mergedDf)
+    source("./scripts/extractMergeCreateDf.R")
+    codebook_data <- mergedDf; rm(mergedDf)
 
 #Metadata : Add
-
-    
     metadata(codebook_data)$name <- "Human Activity Recognition Using Smartphones Dataset"
 
     metadata(codebook_data)$description <- "The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist."
@@ -54,7 +52,13 @@ Now, we're preparing our data for the codebook.
     metadata(codebook_data)$spatialCoverage <- "Online"
 
 #Labels : Variables
-
+    # Dict : Import
+    dict <- labelMergedDf; rm(labelMergedDf)
+    
+     #df expected => 2 col df : 1st col var name, 2nd col var labels / use dplyr
+    var_label(codebook_data) <- dict %>%
+        select(variable, label) %>%
+        dict_to_list()  # will make a list to be used as label which requires list format
     
     
     

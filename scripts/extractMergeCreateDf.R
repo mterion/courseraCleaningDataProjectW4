@@ -85,7 +85,7 @@ library(dplyr)
                 mutate(labelGroupOr = if_else((between(row_number(), 1, 4)),TRUE, FALSE))
         
         #labels : create 2 character vectors
-        lab1 <- c("id", "set", "labels", "subject")
+        lab1 <- c(NA,NA,NA,NA) # Label name suppressed because identicalto var name = looking bad in codebook df 
         lab2 <- read.table("./data/sourceData/features.txt", header = FALSE) %>%
                 pull(V2) %>%
                 as.character()
@@ -127,6 +127,8 @@ library(dplyr)
         labelMergedDf [3,3] <- labelString
         labelMergedDf [4,3] <- "Subject id number"
 
+        
+         
         
         
         
