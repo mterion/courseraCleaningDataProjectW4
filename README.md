@@ -27,34 +27,33 @@ Contains all the original data in format txt
 
 2. *finalData*
 Contains the final - clean - merged data sets used for the analysis.
-  * The *metadataFile* to export or share metadata if needed. It contains the tidy data set with all metadata and values attached to it.
+  * The *metadataFile* to export or share data and metadata if needed. It contains the tidy data set with all metadata and values attached to it.
   * The same tidy data set, representing the merged train and test set, in the R data frame format.
   * The data set containing only the measurements on the mean and standard deviation, in the R data frame format.
-  * the data set containing the average of each variable for each activity and each subject.
+  * The data set containing the average of each variable for each activity and each subject.
+  * The same data set as the last one, but in txt format
 
 
 ## Scripts
 The following scripts are run sequentially:
 1. *run_analysis.R*
-* Call/run the codebook file *codebook.Rmd*
-2. *codebook.Rmd*
-* Call/run the *extractMergeCreateDf.R* file
-* Add metadata : 
-3. *extractMergeCreateDf.R* file
+* Call/run the  *extractMergeCreateDf.R* file 
+* Continue the analysis to answer each of the 5 quiz questions
+
+2. *extractMergeCreateDf.R* file 
 * Extract the source txt data sets
-* Clean them
-* Merge them together
-4. *codebook.Rmd* continues its work
-* Integrate the merged data frame and rename it into codebook_data
-* Add meta data and create the *metadataFile* that can be found in the file *data/finalData*
-* Add labels to values and variables
+* Merge, clean and assign labels to the data set
 
-
+3. *codebook.Rmd* 
+* Call/run the *extractMergeCreateDf.R* file
+* Add metadata to the tidy data set
+* Create the *metadataFile* to export or share the data and metadata
+* Create a clean codebook
 
 ## Output
 The output folder contains the published codebook in html format html to be displayed in a browser. His name is *codebook.html*.
 
 ## Figure
-Contains the individual descriptiv graphs for each variable
+Contains the individual descriptive graphs for each variable. It's just a sample, because uploading all graphs would be too heavy.
 
-## Codebook
+
