@@ -2,7 +2,7 @@
 
 # Run the codebook
 rm(list = ls())
-source("codebook.Rmd")
+source("./scripts/codebook.Rmd")
 
 
 
