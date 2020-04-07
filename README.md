@@ -27,7 +27,10 @@ Contains all the original data in format txt
 
 2. *finalData*
 Contains the final - clean - merged data sets used for the analysis.
-  * The *metadataFile* to export or share metadata if needed. It contains the final data set with all metadata and values attached to it.
+  * The *metadataFile* to export or share metadata if needed. It contains the tidy data set with all metadata and values attached to it.
+  * The same tidy data set, representing the merged train and test set, in the R data frame format.
+  * The data set containing only the measurements on the mean and standard deviation, in the R data frame format.
+  * the data set containing the average of each variable for each activity and each subject.
 
 
 ## Scripts

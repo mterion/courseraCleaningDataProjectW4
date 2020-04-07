@@ -16,8 +16,8 @@ library(dplyr)
 
         trainLab <- trainLab %>%
                 mutate(id = rownames(trainLab)) %>%
-                rename(labels = V1) %>%
-                select(id, labels)
+                rename(activities = V1) %>%
+                select(id, activities)
 
         trainSubj <- trainSubj %>%
                 mutate(id = rownames(trainSubj)) %>%
@@ -28,7 +28,7 @@ library(dplyr)
         trainMerged <- full_join(trainSet, trainLab, by = "id") %>%
                 full_join(trainSubj, by = "id") %>%
                 mutate(set = 1) %>%
-                select(set, labels, subject, V1:V561)
+                select(set, activities, subject, V1:V561)
 
         #Delete unused DataFrames
         rm(trainSet, trainLab, trainSubj)
@@ -46,8 +46,8 @@ library(dplyr)
         
         testLab <- testLab %>%
                 mutate(id = rownames(testLab)) %>%
-                rename(labels = V1) %>%
-                select(id, labels)
+                rename(activities = V1) %>%
+                select(id, activities)
         
         testSubj <- testSubj %>%
                 mutate(id = rownames(testSubj)) %>%
@@ -58,7 +58,7 @@ library(dplyr)
         testMerged <- full_join(testSet, testLab, by = "id") %>%
                 full_join(testSubj, by = "id") %>%
                 mutate(set = 2) %>%
-                select(set, labels, subject, V1:V561)
+                select(set, activities, subject, V1:V561)
 
         #Delete unused DataFrames
         rm(testSet, testLab, testSubj)
@@ -69,7 +69,7 @@ library(dplyr)
         
         mergedDf <- mergedDf %>%
                 mutate(id = as.numeric(rownames(mergedDf))) %>%
-                mutate(set=as.factor(set), labels=as.factor(labels), subject=as.factor(subject)) %>%
+                mutate(set=as.factor(set), activities=as.factor(activities), subject=as.factor(subject)) %>%
                 select(id, set:V561) 
 
 # Dict creation: data frame with two columns for labeling variables + values
@@ -147,7 +147,7 @@ library(dplyr)
 
         labVal <- sub("_", " ", labVal)
 
-        codebook_data$labels <- factor(codebook_data$labels, levels = c(1,2,3,4,5,6), labels= labVal)
+        codebook_data$activities <- factor(codebook_data$activities, levels = c(1,2,3,4,5,6), labels= labVal)
 
         codebook_data$set <- factor(codebook_data$set, levels = c(1,2), labels = c("train", "test"))
         rm(labVal)
