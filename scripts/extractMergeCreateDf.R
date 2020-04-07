@@ -152,5 +152,8 @@ library(dplyr)
         codebook_data$set <- factor(codebook_data$set, levels = c(1,2), labels = c("train", "test"))
         rm(labVal)
 
+# Save dataframe
+        save(codebook_data, file="./data/finalData/tidyMergedTrainTestDf")
+        #load("./data/finalData/tidyMergedTrainTestDf")
 
 
