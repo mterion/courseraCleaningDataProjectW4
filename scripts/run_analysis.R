@@ -6,6 +6,7 @@
         source("./scripts/extractMergeCreateDf.R")
         df <- codebook_data; rm(codebook_data)
 
+
 #Question2:
         #Extracts only the measurements on the mean and standard deviation for each measurement.
         library(labelled)
@@ -29,4 +30,20 @@
                 copy_labels_from(dfMeanStd)     # Need this, bec if not, dplyr will drop labels
         
         save(dfAver, file="./data/finalData/dfAver")
+       
+#TXT Format:
+        # The export in TXT format do not keep labels-> I had thus to copy variable labels into variable label to be able to see
+        # coorect variable names in txt format
         
+        labelsVect <- dfAver %>%
+                copy_labels_from(dfMeanStd) %>%
+                var_label() %>%
+                as.character()
+        labelsVect[1] <- colnames(dfAver)[1]
+        labelsVect[2] <- colnames(dfAver)[2]
+        colnames(dfAver) <- labelsVect
+        dfAverTXT <- remove_var_label(dfAver)
+         
+        write.table(dfAverTXT, "./data/finalData/tidyDatSetStep5.txt",sep="\t",row.names = FALSE ) 
+        # txt tab separated is very good to share files with for non technical user -> easy to open in excel
+        rm(labelsVect, dict)
