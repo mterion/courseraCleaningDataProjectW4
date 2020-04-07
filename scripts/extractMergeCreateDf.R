@@ -129,7 +129,28 @@ library(dplyr)
         rm(labVal,i,r, labelString)
         
          
-        
-        
-        
-        
+#Labels : Variables
+        # Dict : Import
+        codebook_data <- mergedDf; rm(mergedDf)
+        dict <- labelMergedDf; rm(labelMergedDf)
+
+        #df expected => 2 col df : 1st col var name, 2nd col var labels / use dplyr
+        var_label(codebook_data) <- dict %>%
+                select(variable, label) %>%
+                dict_to_list()  # will make a list to be used as label which requires list format
+
+        #Labels : Values
+        labVal <- read.table("./data/sourceData/activity_labels.txt", header = FALSE) %>%
+                pull(V2) %>%
+                as.character() %>%
+                tolower()
+
+        labVal <- sub("_", " ", labVal)
+
+        codebook_data$labels <- factor(codebook_data$labels, levels = c(1,2,3,4,5,6), labels= labVal)
+
+        codebook_data$set <- factor(codebook_data$set, levels = c(1,2), labels = c("train", "test"))
+        rm(labVal)
+
+
+
