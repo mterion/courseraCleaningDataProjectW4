@@ -6,4 +6,4 @@ The raw file will not display in Github. To view it, you have two different solu
 
 
 ### Visit this website
-This website will simply guide you to append the [https:://rawcdn.githack.com/] part before the raw link found on github
+[This website](https://raw.githack.com/) will simply guide you to append the *https:://rawcdn.githack.com/* part before the raw link indicated on github
