@@ -2,7 +2,7 @@
 
 # Run the codebook
 rm(list = ls())
-source("./scripts/codebook.Rmd")
+source("./extractMergeCreateDf.R")
 
 
 
