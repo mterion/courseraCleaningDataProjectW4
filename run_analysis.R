@@ -188,7 +188,8 @@
                 
         #Extracts only the measurements on the mean and standard deviation for each measurement.
 
-        target <- look_for(df, "mean", "std")
+        target <- look_for(df, "mean()", "std()")
+        target1 <- grepl("mean..", colNames(df)) | grepl("std..", colNames(df))       
         targetVar <- target$variable
         
         dfMeanStd <- df %>%

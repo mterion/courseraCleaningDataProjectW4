@@ -19,9 +19,7 @@ Creator:Emmanuel Clivaz
 This data set contains the average of each variable for each activity and each subject from the Human Activity Recognition Using Smartphones Data Set.
 
 ### Description:
-Data in dataset contains 180 rows and 88 variables for
-  * mean(): Mean value
-  * std(): Standard deviation
+Data in dataset contains 180 rows and 88 variables for mean and std
   
 The whole data set has been grouped by 
   *subject - 
