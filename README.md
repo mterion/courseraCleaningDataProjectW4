@@ -15,7 +15,16 @@ You should create one R script called run_analysis.R that does the following.
 1. Appropriately labels the data set with descriptive variable names.
 1. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-## Data
+## First Github level:
+Test files left at the first level of this Github reapository for easy review and access:
+* *run_analysis.R*
+* *README*
+* *codebookSimpleVersion* : This simple codebook provide details on the final data set of question 5. A more detailed codebook of the whole data set can be found underneath (see Codebook -> Output)
+
+
+## Deeper levels
+
+### Data
 All data can be found into the data folder data that contains two folder subdivisions *sourceData* and *finalData*
 
 1. *sourceData*
@@ -34,7 +43,7 @@ Contains the final - clean - merged data sets used for the analysis.
   * The same data set as the last one, but in txt format
 
 
-## Scripts
+### Scripts
 The following scripts can be run :
 1. *run_analysis.R*
 * Extract, create and merge to make a tidy data set 
@@ -51,10 +60,10 @@ The following scripts can be run :
 * Create the *metadataFile* to export or share the data and metadata
 * Create a clean codebook
 
-## Codebook -> Output
+### Codebook -> Output
 The output folder contains the published codebook in html format html to be displayed in a browser. His name is *codebook.html*.
 
-## Figure
+### Figure
 Contains the individual descriptive graphs for each variable. It's just a sample, because uploading all graphs would be too heavy.
 
 
