@@ -187,20 +187,33 @@
 #Question2:
                 
         #Extracts only the measurements on the mean and standard deviation for each measurement.
-
-        target <- look_for(df, "mean()", "std()")
-        target1 <- grepl("mean..", colNames(df)) | grepl("std..", colNames(df))       
-        targetVar <- target$variable
+                # Given the fact that I am using labels for variable to keep the name of variable simple to work with
+                # I had to do the following process to extract only the variables with label mean() and std()
         
+        # Make a logical vector
+        meanStdVect <- grepl("mean[:():]", var_label(df)) | grepl("std[:():]", var_label(df))
+        
+        # Make a variable names vector
+        varNameVect <- names(df)
+        
+        # Create with both a dataframe and filter rows based on TRUE
+        targetDf <- data.frame(varNameVect, meanStdVect) %>%
+                filter(meanStdVect == TRUE)
+        
+        # Create a variable name vector out of this data frame
+        targetVar <- targetDf$varNameVect
+        
+        # Filter the main dataset with the help of the variable name vector
         dfMeanStd <- df %>%
                 select(id:activities, targetVar)
-        
+
+        # Result recorded in the data frame named dfMeanStd
         save(dfMeanStd, file="./data/finalData/dfMeanStd")
-        rm(target, targetVar)
+        rm(targetVar, varNameVect, meanStdVect, targetDf)
         
         
         
-# Result recorded in the data frame named dfMeanStd
+
         
         
 #----------------
@@ -208,7 +221,7 @@
                        
 #Question3 + 4:
         # Uses descriptive activity names to name the activities in the data set
-        # -> Already done in previous stages -> the data frame df is cleaned with descriptive activity names and labels
+        # -> Already done in previous stages -> the data frame df is cleaned with descriptive activity names and labels attached to each variable
 
 #----------------
 
@@ -217,10 +230,10 @@
         # From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
         dfAver <- dfMeanStd %>%
                 group_by_at(vars(activities, subject)) %>%
-                summarise_at(vars(V1:V561), mean, na.rm=TRUE) %>%
+                summarise_at(vars(V1:V543), mean, na.rm=TRUE) %>%
                 copy_labels_from(dfMeanStd) %>%     # Need this, bec if not, dplyr will drop labels
                 arrange(subject, activities) %>%
-                select(subject, activities, V1:V561)
+                select(subject, activities, V1:V543)
         
         save(dfAver, file="./data/finalData/dfAver")
         
