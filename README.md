@@ -51,7 +51,7 @@ The following scripts can be run :
 * Create the *metadataFile* to export or share the data and metadata
 * Create a clean codebook
 
-## Output
+## Codebook -> Output
 The output folder contains the published codebook in html format html to be displayed in a browser. His name is *codebook.html*.
 
 ## Figure
