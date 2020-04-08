@@ -19,10 +19,10 @@ You should create one R script called run_analysis.R that does the following.
 Test files left at the first level of this Github reapository for easy review and access:
 * *run_analysis.R*
 * *README*
-* *codebookSimpleVersion* : This simple codebook provide details on the final data set of question 5. A more detailed codebook of the whole data set can be found underneath (see Codebook -> Output)
+* *codebookSimpleVersion* : This simple codebook provides details on the final data set of question 5. A more detailed codebook of the whole data set can be found underneath (see Codebook -> Output)
 
 
-## Deeper levels
+## Deeper Github levels
 
 ### Data
 All data can be found into the data folder data that contains two folder subdivisions *sourceData* and *finalData*
