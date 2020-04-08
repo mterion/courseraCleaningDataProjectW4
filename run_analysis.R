@@ -236,6 +236,8 @@
         labelsVect[2] <- colnames(dfAver)[2]
         colnames(dfAver) <- labelsVect
         dfAverTXT <- remove_var_label(dfAver)
+        
+        save(dfAverTXT, file="./data/finalData/dfAverTXT")
         rm(labelsVect)
 
                 
