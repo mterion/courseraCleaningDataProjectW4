@@ -35,14 +35,15 @@ Contains the final - clean - merged data sets used for the analysis.
 
 
 ## Scripts
-The following scripts are run sequentially:
+The following scripts can be run :
 1. *run_analysis.R*
-* Call/run the  *extractMergeCreateDf.R* file 
+* Extract, create and merge to make a tidy data set 
 * Continue the analysis to answer each of the 5 quiz questions
 
 2. *extractMergeCreateDf.R* file 
-* Extract the source txt data sets
-* Merge, clean and assign labels to the data set
+* File used in the codebook creation
+* Merge, clean and assign labels to the data set ()
+* Do the same cleaning operation as the first part of the run analysis file, but separated due to the request of this exercice to have all code in one file *run_analysis.R*
 
 3. *codebook.Rmd* 
 * Call/run the *extractMergeCreateDf.R* file
